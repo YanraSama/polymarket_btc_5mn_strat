@@ -24,7 +24,7 @@ print ("private  addr key : ", PRIVATE_KEY)
 import requests, time, hmac, hashlib
 
 
-acct = Account.from_key("0x4460836331a0103c71068ca81c248aff3984d208e6791e6c488525a460b51373")
+acct = Account.from_key("PRIVATE_KEY")
 FUNDER_ADDRESS = os.getenv("FUNDER_ADDRESS")
 
 print("Adresse dérivée :", FUNDER_ADDRESS)
