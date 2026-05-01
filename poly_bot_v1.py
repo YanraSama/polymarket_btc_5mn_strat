@@ -14,24 +14,25 @@ from web3 import Web3
 from eth_account import Account
 import requests as req
 
+from dotenv import load_dotenv
 
+load_dotenv()
+PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 
-
+print ("private  addr key : ", PRIVATE_KEY)
 # Test direct sans py_clob_client
 import requests, time, hmac, hashlib
 
 
 acct = Account.from_key("0x4460836331a0103c71068ca81c248aff3984d208e6791e6c488525a460b51373")
-FUNDER_ADDRESS = acct.address
+FUNDER_ADDRESS = os.getenv("FUNDER_ADDRESS")
 
-print("Adresse dérivée :", acct.address)
+print("Adresse dérivée :", FUNDER_ADDRESS)
 
 
 # ================= CONFIG =================
-PRIVATE_KEY = "0x4460836331a0103c71068ca81c248aff3984d208e6791e6c488525a460b51373"  # Mets ta private key ici (ou dans .env)
 HOST = "https://clob.polymarket.com"
 CHAIN_ID = 137  # Polygon mainnet
-FUNDER_ADDRESS = acct.address  # Ton adresse wallet
 
 
 # ── Ensuite seulement : votre create_and_post_order() ─────────
@@ -56,7 +57,7 @@ client = ClobClient(
     chain_id=CHAIN_ID,
     creds=api_creds,   # 🔥 CRUCIAL
     signature_type=1,
-    funder="0xdEd07EA1E65193660a959Fb5Cc82E8Eee183Ff40"
+    funder=FUNDER_ADDRESS
 )
 
 GAMMA_API = "https://gamma-api.polymarket.com"
